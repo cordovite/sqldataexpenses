@@ -48,9 +48,9 @@ To recreate the development environment, you need the following software and/or 
 
 I found these websites useful in developing this software:
 
-* [Website Title](Link)
-*
-*
+* https://www.w3schools.com/sql/
+* https://www.geeksforgeeks.org/sql-using-python/
+* https://www.youtube.com/watch?v=byHcYRpMgI4
 
 ## Future Work
 
