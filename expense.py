@@ -1,10 +1,9 @@
 import sqlite3
 
-# Connect to SQLite database (it will be created if it doesn't exist)
 conn = sqlite3.connect("expenses.db")
 cursor = conn.cursor()
 
-# Create the expenses table if it doesn't exist
+# Create the expenses table 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS expenses (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,27 +15,26 @@ cursor.execute("""
 """)
 conn.commit()
 
-# Function to add new expense
+
 def add_expense(amount, category, date, description):
     cursor.execute("INSERT INTO expenses (amount, category, date, description) VALUES (?, ?, ?, ?)",
                    (amount, category, date, description))
     conn.commit()
-    print("✅ Expense added successfully.")
+    print(" Expense added successfully.")
 
-# Function to update an existing expense
+
 def update_expense(expense_id, new_amount, new_category, new_date, new_description):
     cursor.execute("UPDATE expenses SET amount = ?, category = ?, date = ?, description = ? WHERE id = ?",
                    (new_amount, new_category, new_date, new_description, expense_id))
     conn.commit()
-    print("✅ Expense updated successfully.")
+    print(" Expense updated successfully.")
 
-# Function to delete an expense
 def delete_expense(expense_id):
     cursor.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
     conn.commit()
-    print("✅ Expense deleted successfully.")
+    print(" Expense deleted successfully.")
 
-# Function to view all expenses
+
 def view_expenses():
     cursor.execute("SELECT * FROM expenses")
     rows = cursor.fetchall()
@@ -51,7 +49,7 @@ def view_expenses():
     else:
         print("No expenses found.")
 
-# Demonstrate the functions
+
 def main():
     print("Welcome to the Expense Tracker!\n")
     
@@ -94,7 +92,7 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-# Run the main function
+
 if __name__ == "__main__":
     main()
 
